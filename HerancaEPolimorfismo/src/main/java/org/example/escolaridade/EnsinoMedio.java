@@ -1,0 +1,8 @@
+package org.example.escolaridade;
+
+public class EnsinoMedio extends Escolaridade {
+
+    public EnsinoMedio(String escola) {
+        super(escola);
+    }
+}
