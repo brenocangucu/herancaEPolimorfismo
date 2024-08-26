@@ -1,5 +1,6 @@
 package org.example.funcionarios;
 
+import org.example.comissoes.Cargo;
 import org.example.escolaridade.EnsinoBasico;
 import org.example.escolaridade.EnsinoMedio;
 import org.example.escolaridade.Escolaridade;
@@ -28,6 +29,10 @@ public class RegistroDeFuncionarios {
 
     public void addFuncionario(String nome, Escolaridade escolaridade){
         funcionarios.add(new Funcionario(nome, escolaridade));
+    }
+
+    public void addFuncionario(String nome, Escolaridade escolaridade, Cargo cargo){
+        funcionarios.add(new Funcionario(nome, escolaridade, cargo));
     }
 
     public ArrayList<Funcionario> getFuncionarios() {
