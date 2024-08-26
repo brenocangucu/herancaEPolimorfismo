@@ -6,9 +6,6 @@ import org.example.escolaridade.EnsinoMedio;
 import org.example.escolaridade.Escolaridade;
 import org.example.escolaridade.Graduacao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class RegistroDeFuncionarios {
     Funcionario[] funcionarios;
 
@@ -21,41 +18,47 @@ public class RegistroDeFuncionarios {
     }
 
     public void addFuncionario(Funcionario funcionario){
-        for(int i = 0; i < funcionarios.length; i++){
-            if(funcionarios[i] == null){
-                funcionarios[i] = funcionario;
+            int index = indexaDorVazio();
+
+            if(index < 0){
+                resize();
+                index = indexaDorVazio();
             }
+
+            funcionarios[index] = funcionario;
         }
-    }
 
     public void addFuncionario(String nome) {
-        for (Funcionario f : funcionarios) {
-            for(int i = 0; i < funcionarios.length; i++){
-                if(funcionarios[i] == null){
-                    funcionarios[i] = new Funcionario(nome);
-                }
-            }
+        int index = indexaDorVazio();
+
+        if(index < 0){
+            resize();
+            index = indexaDorVazio();
         }
+
+        funcionarios[index] = new Funcionario(nome);
     }
 
     public void addFuncionario(String nome, Escolaridade escolaridade){
-        for (Funcionario f : funcionarios) {
-            for(int i = 0; i < funcionarios.length; i++){
-                if(funcionarios[i] == null){
-                    funcionarios[i] = new Funcionario(nome, escolaridade);
-                }
-            }
+        int index = indexaDorVazio();
+
+        if(index < 0){
+            resize();
+            index = indexaDorVazio();
         }
+
+        funcionarios[index] = new Funcionario(nome, escolaridade);
     }
 
     public void addFuncionario(String nome, Escolaridade escolaridade, Cargo cargo){
-        for (Funcionario f : funcionarios) {
-            for(int i = 0; i < funcionarios.length; i++){
-                if(funcionarios[i] == null){
-                    funcionarios[i] = new Funcionario(nome, escolaridade, cargo);
-                }
-            }
+        int index = indexaDorVazio();
+
+        if(index < 0){
+            resize();
+            index = indexaDorVazio();
         }
+
+        funcionarios[index] = new Funcionario(nome, escolaridade, cargo);
     }
 
     public Funcionario[] getFuncionarios() {
@@ -156,13 +159,21 @@ public class RegistroDeFuncionarios {
                 return false;
             }
         }
-
         return true;
     }
 
-    @Override
-    public String toString(){
-        return "";
+    public int indexaDorVazio() {
+        for (int i = 0; i < funcionarios.length; i++) {
+            if (funcionarios[i] == null) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void resize(){
+        this.funcionarios = new Funcionario[funcionarios.length + (funcionarios.length /2)];
     }
 
 }
