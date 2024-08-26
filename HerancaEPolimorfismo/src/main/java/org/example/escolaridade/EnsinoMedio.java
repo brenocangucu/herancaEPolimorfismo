@@ -8,6 +8,6 @@ public class EnsinoMedio extends Escolaridade {
 
     @Override
     public String toString(){
-        return "Ensino Médio";
+        return "Ensino Medio";
     }
 }
