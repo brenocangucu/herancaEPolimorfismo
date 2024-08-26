@@ -38,7 +38,7 @@ public class RegistroDeFuncionarios {
         this.funcionarios = funcionarios;
     }
 
-    public double custoDeSalarioSemEscolaridade(){
+    public double salariosSemEscolaridade(){
         double salarioBasico = 0.0;
 
         for(Funcionario funcionario: funcionarios){
@@ -50,7 +50,7 @@ public class RegistroDeFuncionarios {
         return salarioBasico;
     }
 
-    public double custoDeSalarioEnsinoBasico(){
+    public double salariosEnsinoBasico(){
         double salarioBasico = 0.0;
 
         for(Funcionario funcionario: funcionarios){
@@ -62,7 +62,7 @@ public class RegistroDeFuncionarios {
         return salarioBasico;
     }
 
-    public double custoDeSalarioEnsinoMedio(){
+    public double salarioEnsinoMedio(){
         double salarioEnsinoMedio = 0.0;
 
         for(Funcionario funcionario: funcionarios){
@@ -74,7 +74,7 @@ public class RegistroDeFuncionarios {
         return salarioEnsinoMedio;
     }
 
-    public double custoDeSalarioGraduados(){
+    public double salarioGraduados(){
         double salarioGraduados = 0.0;
 
         for(Funcionario funcionario: funcionarios){
@@ -86,7 +86,7 @@ public class RegistroDeFuncionarios {
         return salarioGraduados;
     }
 
-    public double custosDeSalario(){
+    public double salariosTotal(){
         if(funcionarios.isEmpty()){
             return 0.0;
         }
@@ -97,11 +97,11 @@ public class RegistroDeFuncionarios {
     public String salariosPorEscolaridade(){
         StringBuilder str = new StringBuilder();
 
-        str.append("Salários\nSem escolaridade: ").append(custoDeSalarioSemEscolaridade())
-                .append("\nCom Ensino Básico: ").append(custoDeSalarioEnsinoBasico())
-                .append("\nCom Ensino Médio: ").append(custoDeSalarioEnsinoMedio())
-                .append("\nCom Graduação: ").append(custoDeSalarioGraduados())
-                .append("\nTotal: ").append(custoDeSalarioSemEscolaridade() + custoDeSalarioEnsinoBasico() + custoDeSalarioEnsinoMedio() + custoDeSalarioGraduados());
+        str.append("Salarios Por Escolaridade\nSem escolaridade: R$").append(salariosSemEscolaridade())
+                .append("\nCom Ensino Basico: R$").append(salariosEnsinoBasico())
+                .append("\nCom Ensino Medio: R$").append(salarioEnsinoMedio())
+                .append("\nCom Graduacao: R$").append(salarioGraduados())
+                .append("\nTotal: R$").append(salariosSemEscolaridade() + salariosEnsinoBasico() + salarioEnsinoMedio() + salarioGraduados());
 
         return str.toString();
     }
