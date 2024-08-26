@@ -15,7 +15,7 @@ import org.example.funcionarios.RegistroDeFuncionarios;
 import java.util.Arrays;
 
 public class FuncionariosTeste {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         RegistroDeFuncionarios registro = new RegistroDeFuncionarios();
         EnsinoBasico ensinoBasica = new EnsinoBasico("Ensino Básico");
         EnsinoMedio ensinoMedio = new EnsinoMedio("Ensino Médio");
@@ -51,23 +51,21 @@ public class FuncionariosTeste {
         registro.addFuncionario(funcionario9);
         registro.addFuncionario(funcionario10);
 
-        for(Funcionario funcionario: registro.getFuncionarios()){
+
+        //Exercício 07 - Calcule os custos da empresa com salários totais e por nível de escolaridade,
+        //utilize a classe funcionário desenvolvida no exercício anterior.
+        System.out.println("Exercicio 07:\nCargos nao Comissionados\n--------------------\n");
+        for (Funcionario funcionario : registro.getFuncionarios()) {
             System.out.println(funcionario);
             System.out.println();
         }
 
-        Funcionario[] funcionarios = {funcionario1, funcionario2, funcionario3, funcionario4, funcionario5, funcionario6, funcionario7, funcionario8, funcionario9, funcionario10};
-
-        registro.setFuncionarios(funcionarios);
-
-
-        //Exercício 07 - Calcule os custos da empresa com salários totais e por nível de escolaridade,
-        //utilize a classe funcionário desenvolvida no exercício anterior.
-        System.out.println("Total Custo de Salarios (sem cargos comissionados): R$" + registro.salariosTotal());
+        System.out.println("Total Custo de Salarios (sem cargos comissionados): R$" + registro.salariosTotal() + "\n=============================================================");
         System.out.println();
 
         System.out.println(registro.salariosPorEscolaridade());
-        System.out.println();
+        System.out.println("==============================\n");
+
         //Exercício 10 - Refaça o exercício 7 considerando que 10% dos funcionários são
         //Gerentes, 20% são supervisores e 70% são vendedores.
 
@@ -90,19 +88,20 @@ public class FuncionariosTeste {
         //Calcule os custos da empresa com salários totais e por nível de escolaridade,
         //utilize a classe funcionário desenvolvida no exercício anterior
 
-        System.out.println("Total Custo de Salarios (com cargos comissionados): R$" + registro.salariosTotal());
-        System.out.println();
-
-        System.out.println(registro.salariosPorEscolaridade());
-        System.out.println();
-
         //Exercício 11 Sobreescreva o método toString de forma que ele imprima o nome do
         //funcionário, a comissão e o salário total. Imprima todos os
         //funcionários da empresa criada no exercício 7
 
-        for(Funcionario funcionario: registro.getFuncionarios()){
+        System.out.println("Exercicios 10 e 11\nCargos Comissionados\n--------------------\n");
+        for (Funcionario funcionario : registro.getFuncionarios()) {
             System.out.println(funcionario);
             System.out.println();
         }
+
+        System.out.println("Total Custo de Salarios (com cargos comissionados): R$" + registro.salariosTotal() + "\n=============================================================");
+        System.out.println();
+
+        System.out.println(registro.salariosPorEscolaridade());
+        System.out.println("==============================\n");
     }
 }
