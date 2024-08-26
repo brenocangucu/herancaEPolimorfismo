@@ -1,10 +1,14 @@
 package org.example.escolaridade;
 
-public abstract class Escolaridade {
+public class Escolaridade {
     String instituicao;
 
-    public Escolaridade(String escola){
-        this.instituicao = escola;
+    public Escolaridade(){
+
+    }
+
+    public Escolaridade(String instituicao){
+        this.instituicao = instituicao;
     }
 
     public void setInstituicao(String instituicao) {
@@ -13,5 +17,10 @@ public abstract class Escolaridade {
 
     public String getInstituicao() {
         return instituicao;
+    }
+
+    @Override
+    public String toString(){
+        return "Sem ensino";
     }
 }
