@@ -25,7 +25,7 @@ public class Zoologico {
         animais[index] = animal;
     }
 
-    public void adicionarTodosAnimais(Animal[] animais){
+    public void adicionarAnimal(Animal[] animais){
         this.animais = animais;
     }
 
