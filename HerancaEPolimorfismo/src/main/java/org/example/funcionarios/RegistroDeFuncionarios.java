@@ -7,39 +7,62 @@ import org.example.escolaridade.Escolaridade;
 import org.example.escolaridade.Graduacao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RegistroDeFuncionarios {
-    ArrayList<Funcionario> funcionarios;
+    Funcionario[] funcionarios;
 
     public RegistroDeFuncionarios(){
-        funcionarios = new ArrayList<>();
+        funcionarios = new Funcionario[10];
     }
 
     public RegistroDeFuncionarios(int quantidadeDeFuncionarios){
-        funcionarios = new ArrayList<>(quantidadeDeFuncionarios);
+        this.funcionarios = new Funcionario[quantidadeDeFuncionarios];
     }
 
     public void addFuncionario(Funcionario funcionario){
-        funcionarios.add(funcionario);
+        for(int i = 0; i < funcionarios.length; i++){
+            if(funcionarios[i] == null){
+                funcionarios[i] = funcionario;
+            }
+        }
     }
 
-    public void addFuncionario(String nome){
-        funcionarios.add(new Funcionario((nome)));
+    public void addFuncionario(String nome) {
+        for (Funcionario f : funcionarios) {
+            for(int i = 0; i < funcionarios.length; i++){
+                if(funcionarios[i] == null){
+                    funcionarios[i] = new Funcionario(nome);
+                }
+            }
+        }
     }
 
     public void addFuncionario(String nome, Escolaridade escolaridade){
-        funcionarios.add(new Funcionario(nome, escolaridade));
+        for (Funcionario f : funcionarios) {
+            for(int i = 0; i < funcionarios.length; i++){
+                if(funcionarios[i] == null){
+                    funcionarios[i] = new Funcionario(nome, escolaridade);
+                }
+            }
+        }
     }
 
     public void addFuncionario(String nome, Escolaridade escolaridade, Cargo cargo){
-        funcionarios.add(new Funcionario(nome, escolaridade, cargo));
+        for (Funcionario f : funcionarios) {
+            for(int i = 0; i < funcionarios.length; i++){
+                if(funcionarios[i] == null){
+                    funcionarios[i] = new Funcionario(nome, escolaridade, cargo);
+                }
+            }
+        }
     }
 
-    public ArrayList<Funcionario> getFuncionarios() {
+    public Funcionario[] getFuncionarios() {
         return funcionarios;
     }
 
-    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+    public void setFuncionarios(Funcionario[] funcionarios) {
         this.funcionarios = funcionarios;
     }
 
@@ -47,6 +70,10 @@ public class RegistroDeFuncionarios {
         double salarioBasico = 0.0;
 
         for(Funcionario funcionario: funcionarios){
+            if(funcionario == null){
+                continue;
+            }
+
             if(funcionario.getEscolaridade() == null){
                 salarioBasico += funcionario.renda;
             }
@@ -59,6 +86,10 @@ public class RegistroDeFuncionarios {
         double salarioBasico = 0.0;
 
         for(Funcionario funcionario: funcionarios){
+            if(funcionario == null){
+                continue;
+            }
+
             if(funcionario.getEscolaridade() instanceof EnsinoBasico){
                 salarioBasico += funcionario.renda;
             }
@@ -71,6 +102,10 @@ public class RegistroDeFuncionarios {
         double salarioEnsinoMedio = 0.0;
 
         for(Funcionario funcionario: funcionarios){
+            if(funcionario == null){
+                continue;
+            }
+
             if(funcionario.getEscolaridade() instanceof EnsinoMedio){
                 salarioEnsinoMedio += funcionario.renda;
             }
@@ -83,6 +118,10 @@ public class RegistroDeFuncionarios {
         double salarioGraduados = 0.0;
 
         for(Funcionario funcionario: funcionarios){
+            if(funcionario == null){
+                continue;
+            }
+
             if(funcionario.getEscolaridade() instanceof Graduacao){
                 salarioGraduados += funcionario.renda;
             }
@@ -92,11 +131,11 @@ public class RegistroDeFuncionarios {
     }
 
     public double salariosTotal(){
-        if(funcionarios.isEmpty()){
+        if(registroIsEmpty()){
             return 0.0;
         }
 
-        return funcionarios.stream().mapToDouble(salario -> salario.renda).sum();
+        return salariosSemEscolaridade() + salariosEnsinoBasico() + salarioEnsinoMedio() + salarioGraduados();
     }
 
     public String salariosPorEscolaridade(){
@@ -109,6 +148,21 @@ public class RegistroDeFuncionarios {
                 .append("\nTotal: R$").append(salariosSemEscolaridade() + salariosEnsinoBasico() + salarioEnsinoMedio() + salarioGraduados());
 
         return str.toString();
+    }
+
+    public boolean registroIsEmpty(){
+        for(int i = 0 ; i < funcionarios.length ; i++){
+            if(funcionarios[i] != null){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public String toString(){
+        return "";
     }
 
 }

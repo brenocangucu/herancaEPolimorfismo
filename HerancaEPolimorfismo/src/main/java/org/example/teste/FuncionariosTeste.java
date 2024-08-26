@@ -40,9 +40,26 @@ public class FuncionariosTeste {
         Funcionario funcionario9 = new Funcionario("Joao9", graduacao);
         Funcionario funcionario10 = new Funcionario("Joao10", graduacao);
 
-        for (Funcionario funcionario : Arrays.asList(funcionario1, funcionario2, funcionario3, funcionario4, funcionario5, funcionario6, funcionario7, funcionario8, funcionario9, funcionario10)) {
-            registro.addFuncionario(funcionario);
+        registro.addFuncionario(funcionario1);
+        registro.addFuncionario(funcionario2);
+        registro.addFuncionario(funcionario3);
+        registro.addFuncionario(funcionario4);
+        registro.addFuncionario(funcionario5);
+        registro.addFuncionario(funcionario6);
+        registro.addFuncionario(funcionario7);
+        registro.addFuncionario(funcionario8);
+        registro.addFuncionario(funcionario9);
+        registro.addFuncionario(funcionario10);
+
+        for(Funcionario funcionario: registro.getFuncionarios()){
+            System.out.println(funcionario);
+            System.out.println();
         }
+
+        Funcionario[] funcionarios = {funcionario1, funcionario2, funcionario3, funcionario4, funcionario5, funcionario6, funcionario7, funcionario8, funcionario9, funcionario10};
+
+        registro.setFuncionarios(funcionarios);
+
 
         //Exercício 07 - Calcule os custos da empresa com salários totais e por nível de escolaridade,
         //utilize a classe funcionário desenvolvida no exercício anterior.
